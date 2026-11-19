@@ -1,76 +1,76 @@
-**Gestió d'emmagatzematge redundant** 
+# Gestió d'emmagatzematge redundant 
 
-**Paso 1\. Preparar la máquina virtual** 
+### Paso 1\. Preparar la máquina virtual
 
-**![](/Tasca%204/img/lv1.png)**
+![img1](/Tasca%204/img/lv1.png)
 
-**Paso 2\. Comprobar els discos** 
+### Paso 2\. Comprobar els discos
 
-**![](/Tasca%204/img/lv2.png)**
+![img2](/Tasca%204/img/lv2.png)
 
-**Paso 3\. Instalar LVM**   
-**![](/Tasca%204/img/lv3.png)**
+### Paso 3\. Instalar LVM   
+![img3](/Tasca%204/img/lv3.png)
 
-**![](/Tasca%204/img/lv4.png)**
+![img4](/Tasca%204/img/lv4.png)
 
-**Paso 4\. Crear el grupo de volúmenes (VG)** 
+### Paso 4\. Crear el grupo de volúmenes (VG)
 
-**![](/Tasca%204/img/lv5.png)**
+![img5](/Tasca%204/img/lv5.png)
 
-**![](/Tasca%204/img/lv6.png)**
+![img6](/Tasca%204/img/lv6.png)
 
-![][image7]
+![img7](/Tasca%204/img/lv7.png)
 
-**Paso 5\. Crear el volumen lógico (LV)**   
-**![][image8]**
+### 9 Paso 5\. Crear el volumen lógico (LV)   
+![img8](/Tasca%204/img/lv8.png)
 
-![][image9]
+![img9](/Tasca%204/img/lv9.png)
 
-![][image10]
+![img10](/Tasca%204/img/lv10.png)
 
-![][image11]
+![img11](/Tasca%204/img/lv11.png)
 
-![][image12]
+![img12](/Tasca%204/img/lv12.png)
 
-**Paso 6\. Configurar el montaje automático (/etc/fstab)** 
+### Paso 6\. Configurar el montaje automático (/etc/fstab)
 
-**![][image13]**
+![img13](/Tasca%204/img/lv13.png)
 
-**![][image14]**
+![img14](/Tasca%204/img/lv14.png)
 
-**![][image15]**
+![img15](/Tasca%204/img/lv15.png)
 
-**Paso 7\. Crear un espejo (Mirror)** 
+### Paso 7\. Crear un espejo (Mirror) 
 
-**![][image16]**
+![img16](/Tasca%204/img/lv16.png)
 
-**![][image17]**
+![img17](/Tasca%204/img/lv17.png)
 
-**![][image18]**
+![img18](/Tasca%204/img/lv18.png)
 
-## **Paso 8\. Añadir dos discos nuevos para snapshots**
+### Paso 8\. Añadir dos discos nuevos para snapshots
 
-![](/Tasca%204/img/lv19.png)
+![img19](/Tasca%204/img/lv19.png)
 
-![][image20]
+![img20](/Tasca%204/img/lv20.png)
 
-![][image21]  
-![][image22]
+![img21](/Tasca%204/img/lv21.png) 
+![img22](/Tasca%204/img/lv22.png)
 
-**Paso 9\. Crear el volumen de datos** 
+### Paso 9\. Crear el volumen de datos
 
-![][image23]  
-![][image24]
+![img23](/Tasca%204/img/lv23.png)  
+![img24](/Tasca%204/img/lv24.png)
 
-![][image25]
+![img25](/Tasca%204/img/lv25.png)
 
-![][image26]
+![img26](/Tasca%204/img/lv26.png)
 
-**Paso 10\. Crear un snapshot** 
+### Paso 10\. Crear un snapshot
 
-![][image27]
+![img27](/Tasca%204/img/lv27.png)
 
-![][image28]
+![img28](/Tasca%204/img/lv28.png)
 
-**![][image29]**  
-**![][image30]**
+![img29](/Tasca%204/img/lv29.png)
+![img30](/Tasca%204/img/lv30.png)
