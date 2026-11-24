@@ -1,0 +1,116 @@
+# Tasca 5: DRP, Pla de còpies
+
+## Fase 1: Treball individual
+
+### 1. De forma individual, heu de donar resposta a les següents preguntes basant-se en el cas pràctic:
+
+<details>
+ <summary> Cas pràctic </summary>
+"Muntatges i Serveis Tècnics SL" és una petita empresa dedicada a la instal·lació i manteniment d'equips industrials. L'empresa disposa de la següent infraestructura informàtica:
+
+Servidor de Fitxers (Ubuntu Server): Conté tota la documentació crítica:
+
+Documents de Projectes: Plànols, especificacions tècniques (300 GB, creixement moderat).
+Bases de Dades (Comptabilitat i Clients): Crítiques i d'ús diari (20 GB, canvi constant).
+Carpetes Personals dels Usuaris: Per a la feina diària (100 GB).
+10 Equips Clients (Windows 11): Els usuaris treballen majoritàriament amb fitxers del servidor, però alguns tècnics guarden de forma temporal informes i altres arxius importants a la carpeta Documents.
+
+Connexió a Internet: Fibra òptica de 600 Mbps (simètrica).
+
+Un anàlisi dels requisits de recuperació permet determinar les necessitats específiques per a la gestió de les còpies de seguretat:
+
+Temps de Recuperació (RTO): Les dades de Comptabilitat/Clients han d'estar disponibles en menys de 4 hores.
+Pèrdua de Dades Admesa (RPO): Es pot admetre una pèrdua màxima de 24 hores per a la majoria de dades, però les dades de Comptabilitat/Clients no poden perdre més de 4 hores de treball.
+Retenció: Cal guardar les dades amb un historial d'almenys un mes.
+
+---
+</details>
+
+#### Què copiar? (Priorització): Quines són les dades més crítiques del servidor? Cal fer còpia dels 10 equips clients? Justifica-ho.
+
+**Felipe**:
+Les dades més crítiques del servidor són tots els que es troben dins del servidor d'arxius, que aquests contenen les bases de dades informació important i especificacions tècniques per això aquesta zona serà la que hauria de tenir més prioritat. Jo diria que si fa falta una còpia per als 10 equips de clients perquè al final són clients del teu servidor i farien molts problemes no fer les còpies de seguretat, això sí no passar-se de còpies d'això i centrar-se en la informació important del servidor.
+
+**Max**:
+Les dades més crítiques del servidor son les bases de dades i les carpetes personals per als usuaris, per tant les que s’haurien de prioritzar a l’hora de fer les còpies de seguretat per sobre de la resta ja que és on hi ha més dades i per tant les pèrdues seran més significatives, les còpies als equips clients no son prioritat, encara que per evitar problemes, es podrien fer copies menys freqüents de les màquines.
+
+**Hugo**:
+La prioritat és el servidor central, especialment les dades empresarials vitals com aplicacions, documents compartits i registres clau. Sense això, l'empresa s'atura Dels 10 clients també convé guardar la configuració i feina local, ja que una fallada afectaria tothom, però sempre de forma secundària respecte al servidor.
+
+#### Periodicitat i Tipus de Còpia: Proposa un calendari bàsic per a la setmana (Diari/Setmanal/Mensual) i quin tipus de còpia aplicaràs (Completa, Diferencial, Incremental) per a les dades crítiques.
+
+**Felipe**:
+Primer les dades de Compatibilitat/Clients s'especifica que han d'estar disponibles en menys de 4h, així que faria una còpia cada 4h incremental, per a la resta de dades una incremental cada dia com a específica que es permet fins a 24h de pèrdua de dades, finalment cada diumenge a la nit faria una còpia de seguretat completa per si de cas.
+
+**Max**:
+És farà una copia completa de totes les dades el dilluns, seguidament una diferencial cada 4 hores dels arxius de Compatibilitat/Clients, i una copia diaria incremental de la resta de dades, un cop acabada la setmana, les dades es guarden i s'arxiven per tenir l’historial d’un mes requerit.
+
+**Hugo**:
+faria una còpia completa el dilluns a la nit com a base de la setmana, després una incremental de dimarts a dijous a la nit per guardar només els canvis del dia de forma ràpida, una diferencial el divendres a la nit amb tot el canviat de la setmana per recuperar més ràpid, i una completa mensual l'últim divendres de mes per guardar fora de l'empresa, mentre que dels 10 clients només faria una incremental setmanal. 
+
+#### Mitjans i Ubicació: Quin tipus de mitjà de còpia utilitzaries (Discs durs externs, NAS, Cloud, Cintes)? On s'hauria de guardar físicament la còpia més recent (Regla 3-2-1).
+
+**Felipe**:
+Utilitzarà un NAS per a guardar les còpies de seguretat diàries, discos durs externs per a les còpies setmanals i el núvol per a guardar una còpia extra fora de l'empresa. Aplicaria la regla 3-2-1, mantenint 3 còpies de les dades, en 2 mitjans diferents i 1 anés de les instal·lacions. La còpia més recent estaria en el NAS i una altra estaria guardada en el núvol per si ocorre algun problema en l'empresa.
+
+**Max**:
+Per a les còpies cada setmana, discs durs externs, i per a les arxivades, es guardaran al nuvol d’un servei extern, per a còpies mes recents és tindran tres còpies guardades, una als discs durs i una altra al nuvol, i una copia addicional guardada en cintes.
+
+**Hugo**:
+Un NAS com a principal per la rapidesa de les còpies diàries, i el combinaria amb el núvol per tenir seguretat externa, aplicant la regla 3-2-1 de tenir 3 còpies en 2 suports diferents i 1 fora de l'empresa, per això la còpia més recent es guardaria una al NAS de l'oficina per recuperar ràpid i una altra automàticament al núvol per si hi passa algo o un robatori.
+
+## Fase 2: Treball grupal
+
+### 2. Elaboració d'una Proposta Unificada: Heu de consensuar i dissenyar el vostre propi:
+
+*Esquema 3-2-1 de Còpies (3 còpies, 2 mitjans, 1 fora de lloc) basat en els requisits del cas.
+*
+| **Element** | **Proposta unificada** | **Justificació** |
+|---|---|---|
+| Dades crítiques | Bases de dades de Comptabilitat i Clients, documents de projectes i carpetes personals. També es copiaran els documents importants desats localment als 10 equips. | Les bases de dades són les més crítiques perquè contenen informació empresarial que canvia constantment. Els documents dels projectes i les carpetes personals també són importants per mantenir el funcionament de l'empresa. |
+| Periodicitat | Bases de dades cada 4 hores. La resta de dades un cop al dia. Còpia completa setmanal. | Permet complir l'RPO de 4 hores per a les bases de dades i l'RPO de 24 hores per a la resta de la informació. |
+| Tipus de còpia | Còpies incrementals durant la setmana i una còpia completa cada diumenge. | Les còpies incrementals ocupen menys espai i requereixen menys temps. Les còpies completes permeten disposar d'una base per recuperar totes les dades. |
+| Medi 1 (local) | NAS dedicat a les còpies de seguretat, amb discos configurats en RAID. | Permet fer còpies automàtiques i recuperar les dades ràpidament en cas d’incident. |
+| Medi 2 (extern) | Emmagatzematge al núvol. | Permet conservar una còpia fora de les instal·lacions i protegir les dades davant de robatoris, incendis o fallades físiques. |
+
+### 3. Elaboración de la proposta final:
+
+*Dades objecte de la còpia de seguretat: Quines dades es copien i amb quina freqüència, indicant clarament les crítiques i les no crítiques.
+Cronograma setmanal detallat.*
+
+| **Dia** | **Dades** | **Tipus de còpia** | **Suport** |
+|---|---|---|---|
+| Dilluns | Totes les bases de dades, documents de projectes, carpetes personals i arxius importants dels clients. | Completa | NAS + Núvol |
+| Dimarts | Bases de dades cada 4 hores. La resta d'arxius i documents dels clients. | Incremental | NAS + Núvol |
+| Dimecres | Bases de dades cada 4 hores. La resta d'arxius i documents dels clients. | Incremental | NAS + Núvol |
+| Dijous | Bases de dades cada 4 hores. La resta d'arxius i documents dels clients. | Incremental | NAS + Núvol |
+| Divendres | Bases de dades cada 4 hores. La resta d'arxius i documents dels clients. | Incremental | NAS + Núvol |
+| Dissabte | Bases de dades cada 4 hores. La resta d'arxius i documents dels clients. | Incremental | NAS + Núvol |
+| Diumenge | Totes les bases de dades, documents, carpetes personals i arxius importants dels clients. | Completa | NAS + Núvol |
+
+### 4. Elecció dels mitjans i ubicació (Regla 3-2-1):
+
+*Mitjà 1 (Local): Quin mitjà concret (p. ex., Disc dur USB, NAS) s'utilitza.
+Mitjà 2 (Extern): Quin mitjà (p. ex., Cloud, LTO) i el proveïdor proposat (p. ex., Azure, Google Cloud, servei local).
+Ubicació Fora de Lloc: On es guarda la còpia externa (física o lògica) i qui és el responsable de la seva gestió.*
+
+**Mitjà 1 (Local)**:
+S'utilitzarà un NAS amb discos configurats en RAID per guardar les còpies de seguretat i facilitar una recuperació ràpida de les dades.
+**Mitjà 2 (Extern)**:
+S'utilitzarà Microsoft Azure per guardar una còpia al núvol, protegida i xifrada.
+**Ubicació fora de lloc**:
+Les còpies externes s'emmagatzemaran als centres de dades de Microsoft Azure. El responsable informàtic supervisarà les còpies i els permisos d'accés.
+
+**S'aplicarà la regla 3-2-1**:
+3 còpies de les dades.
+2 mitjans d'emmagatzematge diferents.
+1 còpia fora de les instal·lacions.
+
+### 5. Estratègia de recuperació:
+
+Per garantir la recuperació de les dades:
+
+**RPO (4 hores)**: es faran còpies de les bases de dades cada 4 hores per limitar la pèrdua d'informació.
+**RTO (4 hores)**: les còpies estaran disponibles al NAS per poder recuperar ràpidament les bases de dades.
+**Resta de dades**: es faran còpies diàries per complir el RPO de 24 hores.
+**Comprovacions**: es revisaran les còpies periòdicament i es faran proves de restauració per assegurar que funcionen correctament.
